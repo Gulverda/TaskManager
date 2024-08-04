@@ -14,7 +14,7 @@ function Login({ setToken }) {
       const response = await axios.post('http://localhost:5000/login', { username, password });
       setToken(response.data.access_token);
       setMessage('Login successful');
-      navigate('/signout'); // Redirect to a protected route or the home page
+      navigate('/addtask'); // Redirect to AddTask page
     } catch (error) {
       setMessage(error.response.data.msg);
     }
