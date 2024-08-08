@@ -18,12 +18,17 @@ def signup():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
+    phone_number = data.get('phoneNumber')
 
     if mongo.db.users.find_one({'username': username}):
         return jsonify({"msg": "Username already exists"}), 409
 
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-    mongo.db.users.insert_one({'username': username, 'password': hashed_password})
+    mongo.db.users.insert_one({
+        'username': username, 
+        'password': hashed_password, 
+        'phoneNumber': phone_number,
+        })
     return jsonify({"msg": "User created successfully"}), 201
 
 @app.route('/login', methods=['POST'])

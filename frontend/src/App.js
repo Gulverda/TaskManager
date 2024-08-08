@@ -4,16 +4,11 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Signout from './components/Signout';
 import AddTask from './components/AddTask';
-import TaskList from './components/TaskList'; // Import TaskList component
+import TaskList from './components/TaskList';
 
 function App() {
   const [token, setToken] = useState('');
-  const [showLogin, setShowLogin] = useState(true);
   const navigate = useNavigate();
-
-  const handleToggle = () => {
-    setShowLogin(!showLogin);
-  };
 
   const handleAddTaskClick = () => {
     navigate('/addtask');
@@ -28,21 +23,12 @@ function App() {
           element={
             token ? (
               <div>
-                <button onClick={handleAddTaskClick}>Add Task</button>
-                <TaskList token={token} /> {/* TaskList shown */}
+                <button className="button" onClick={handleAddTaskClick}>Add Task</button>
+                <TaskList token={token} />
                 <Signout token={token} setToken={setToken} />
               </div>
             ) : (
-              <div>
-                <button onClick={handleToggle}>
-                  {showLogin ? 'Sign Up' : 'Sign In'}
-                </button>
-                {showLogin ? (
-                  <Login setToken={setToken} />
-                ) : (
-                  <Signup />
-                )}
-              </div>
+              <Login setToken={setToken} />
             )
           }
         />
@@ -71,8 +57,8 @@ function App() {
           element={
             token ? (
               <div>
-                <button onClick={handleAddTaskClick}>Add Task</button>
-                <TaskList token={token} /> {/* TaskList shown */}
+                <button className="button" onClick={handleAddTaskClick}>Add Task</button>
+                <TaskList token={token} />
                 <Signout token={token} setToken={setToken} />
               </div>
             ) : (
