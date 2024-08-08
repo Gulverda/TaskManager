@@ -1,28 +1,25 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Signout({ token, setToken }) {
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSignout = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/signout', {}, {
-        headers: { Authorization: `Bearer ${token}` }
+      await axios.post('http://localhost:5000/signout', {}, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-      setMessage(response.data.msg);
-      setToken('');  // Clear the token
-      navigate('/login');
+      setToken('');
+      navigate('/');
     } catch (error) {
-      setMessage('Signout failed');
+      console.error('Signout failed', error);
     }
   };
 
   return (
     <div>
-      <button onClick={handleSignout}>Signout</button>
-      {message && <p>{message}</p>}
+      <button onClick={handleSignout}>Sign Out</button>
     </div>
   );
 }

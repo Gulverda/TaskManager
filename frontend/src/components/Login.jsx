@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login({ setToken }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -13,10 +13,9 @@ function Login({ setToken }) {
     try {
       const response = await axios.post('http://localhost:5000/login', { username, password });
       setToken(response.data.access_token);
-      setMessage('Login successful');
-      navigate('/addtask'); // Redirect to AddTask page
+      navigate('/profile'); // Redirect to profile page on successful login
     } catch (error) {
-      setMessage(error.response.data.msg);
+      setError('Login failed. Please check your credentials.');
     }
   };
 
@@ -38,7 +37,7 @@ function Login({ setToken }) {
         />
         <button type="submit">Login</button>
       </form>
-      {message && <p>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 }

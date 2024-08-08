@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from bson import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/taskdb"
@@ -62,6 +63,31 @@ def get_tasks():
     for task in tasks:
         task['_id'] = str(task['_id'])  # Convert ObjectId to string
     return jsonify(tasks), 200
+
+@app.route('/tasks/<task_id>', methods=['PUT'])
+@jwt_required()
+def update_task(task_id):
+    data = request.get_json()
+    title = data.get('title')
+    description = data.get('description')
+
+    result = mongo.db.tasks.update_one(
+        {'_id': ObjectId(task_id), 'user': get_jwt_identity()},
+        {'$set': {'title': title, 'description': description}}
+    )
+    if result.matched_count == 0:
+        return jsonify({"msg": "Task not found"}), 404
+
+    return jsonify({"msg": "Task updated successfully"}), 200
+
+@app.route('/tasks/<task_id>', methods=['DELETE'])
+@jwt_required()
+def delete_task(task_id):
+    result = mongo.db.tasks.delete_one({'_id': ObjectId(task_id), 'user': get_jwt_identity()})
+    if result.deleted_count == 0:
+        return jsonify({"msg": "Task not found"}), 404
+
+    return jsonify({"msg": "Task deleted successfully"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
