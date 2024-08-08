@@ -65,10 +65,15 @@ body{
   .forgot {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .forgot-button{
     font-size: 0.75rem;
     line-height: 1rem;
-    color: rgba(156, 163, 175,1);
+    border: none;
+    background: none;
     margin: 8px 0 14px 0;
+    color: rgba(156, 163, 175,1);
   }
   
   .forgot a,.signup a {
