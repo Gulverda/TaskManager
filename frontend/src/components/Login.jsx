@@ -55,15 +55,17 @@ function Login({ setToken }) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="forgot">
-              <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+              <button type="button" onClick={() => alert('Forgot Password Clicked!')} className="forgot-button">
+                Forgot Password?
+              </button>
             </div>
           </div>
           <div className="for_grid">
-          <button className="sign" type="submit">Sign in</button>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <p className="signup">
-            Don't have an account? <button type="button" onClick={handleToggle} className="toggle-button">Sign up</button>
-          </p>
+            <button className="sign" type="submit">Sign in</button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p className="signup">
+              Don't have an account? <button type="button" onClick={handleToggle} className="toggle-button">Sign up</button>
+            </p>
           </div>
         </form>
       )}

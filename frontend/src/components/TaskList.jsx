@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 function TaskList({ token }) {
@@ -9,11 +9,7 @@ function TaskList({ token }) {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    fetchTasks();
-  }, [token]);
-
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       const response = await axios.get('http://localhost:5000/tasks', {
         headers: { Authorization: `Bearer ${token}` },
@@ -25,7 +21,11 @@ function TaskList({ token }) {
         setMessage(error.response.data.msg);
       }
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   const handleDelete = async (taskId) => {
     try {
