@@ -52,9 +52,11 @@ function AppRoutes() {
           element={
             token ? (
               <div>
+                <div style={{display: "flex", justifyContent: "space-between"}}>
                 <button className="button" onClick={handleAddTaskClick}>Add Task</button>
-                <TaskList token={token} />
                 <Signout token={token} setToken={setToken} />
+                </div>
+                <TaskList token={token} />
               </div>
             ) : (
               <Login setToken={setToken} />

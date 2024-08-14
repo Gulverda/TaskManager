@@ -1,0 +1,101 @@
+/* AddTask Component Styling
+.add-task-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #16213e;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #e94560;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  input[type='text'],
+  textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #2d2d44;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #0f3460;
+    color: #ffffff;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type='text']:focus,
+  textarea:focus {
+    border-color: #e94560;
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button[type='submit'] {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+  }
+  
+  button[type='submit']:hover {
+    background-color: #f05454;
+    transform: translateY(-2px);
+  }
+  
+  button[type='button'] {
+    background-color: #1f4068;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(31, 64, 104, 0.3);
+    margin-top: 20px;
+  }
+  
+  button[type='button']:hover {
+    background-color: #16213e;
+    transform: translateY(-2px);
+  }
+  
+  .error {
+    color: #dc3545;
+    font-size: 14px;
+  }
+  
+  .message {
+    color: #22c55e;
+    font-size: 14px;
+    text-align: center;
+    background-color: #1f4068;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    margin-top: 15px;
+  }
+   */

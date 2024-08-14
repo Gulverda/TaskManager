@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import '../CSS/TaskList.css';
 
 function TaskList({ token }) {
   const [tasks, setTasks] = useState([]);
@@ -76,36 +77,52 @@ function TaskList({ token }) {
   };
 
   return (
-    <div>
+    <div className="task-list-container">
       <h2>Task List</h2>
-      {message && <p>{message}</p>}
-      {tasks.map((task) => (
-        <div key={task._id} style={{ marginBottom: '20px' }}>
-          {editingTask && editingTask._id === task._id ? (
-            <div>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              <button onClick={handleUpdate}>Update</button>
-              <button onClick={() => setEditingTask(null)}>Cancel</button>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
-            </div>
-          ) : (
-            <div>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <button onClick={() => handleEdit(task)}>Edit</button>
-              <button onClick={() => handleDelete(task._id)}>Delete</button>
-            </div>
-          )}
-        </div>
-      ))}
+      {message && <p className="message">{message}</p>}
+      <table className="task-table">
+        <tbody>
+          {tasks.map((task) => (
+            <tr key={task._id}>
+              <td>
+                {editingTask && editingTask._id === task._id ? (
+                  <div className="edit-form">
+                    <input
+                      type="text"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <textarea
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <button onClick={handleUpdate}>Update</button>
+                    <button
+                      className="cancel-btn"
+                      onClick={() => setEditingTask(null)}
+                    >
+                      Cancel
+                    </button>
+                    {error && <p className="error">{error}</p>}
+                  </div>
+                ) : (
+                  <div>
+                    <h3>{task.title}</h3>
+                    <p>{task.description}</p>
+                    <button onClick={() => handleEdit(task)}>Edit</button>
+                    <button
+                      className="cancel-btn"
+                      onClick={() => handleDelete(task._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

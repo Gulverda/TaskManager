@@ -167,3 +167,6 @@ body{
   
   /* Make sure other styles are applied */
   
+  .tasklist{
+    display: flex !important;
+  }

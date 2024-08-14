@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../CSS/AddTask.css';
 
 function AddTask({ token }) {
   const [title, setTitle] = useState('');
