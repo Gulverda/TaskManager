@@ -8,13 +8,15 @@ body {
 }
 
 .task-list-container {
-  max-width: 800px;
+  width: 800px;
   margin: 40px auto;
   padding: 30px;
   background: #16213e;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  width: 100% !important;
+  max-height: 750px;
+  overflow-y: scroll;
+  /* width: 100% !important; */
 }
 
 h2 {
@@ -40,7 +42,7 @@ h2 {
 
 /* Task List Table */
 .task-table {
-  /* width: 100%; */
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -83,9 +85,9 @@ h2 {
   color: #bdbdbd;
 }
 
-.task-table td:last-child {
+/* .task-table td:last-child {
   text-align: right;
-}
+} */
 
 .task-table button {
   background-color: #e94560;
@@ -120,8 +122,8 @@ h2 {
 }
 
 .edit-form {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  /* flex-direction: column; */
   gap: 15px;
   background-color: #1f4068;
   padding: 25px;
@@ -156,4 +158,8 @@ h2 {
   color: red;
   font-size: 14px;
   margin-top: -10px;
+}
+
+.inputs{
+  display: flex !important;
 }

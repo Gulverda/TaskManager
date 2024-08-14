@@ -86,7 +86,8 @@ function TaskList({ token }) {
             <tr key={task._id}>
               <td>
                 {editingTask && editingTask._id === task._id ? (
-                  <div className="edit-form">
+                  <div className="edit-form" style={{display: 'flex'}}>
+                    <div className="inputs">
                     <input
                       type="text"
                       value={title}
@@ -96,13 +97,16 @@ function TaskList({ token }) {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
-                    <button onClick={handleUpdate}>Update</button>
+                    </div>
+                   <div className="buttons">
+                   <button onClick={handleUpdate}>Update</button>
                     <button
                       className="cancel-btn"
                       onClick={() => setEditingTask(null)}
                     >
                       Cancel
                     </button>
+                   </div>
                     {error && <p className="error">{error}</p>}
                   </div>
                 ) : (
