@@ -19,6 +19,35 @@ body {
   /* width: 100% !important; */
 }
 
+
+
+/*Scroll Styles*/
+
+.task-list-container {
+  scrollbar-color: #6a0dad #1c1c1c; /* Thumb color and track color */
+  scrollbar-width: thin; /* Scrollbar width */
+}
+
+
+.task-list-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.task-list-container::-webkit-scrollbar-track {
+  background: #1c1c1c; /* Track color */
+  border-radius: 10px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb {
+  background: #6a0dad; /* Scrollbar color */
+  border-radius: 10px;
+}
+
+.task-list-container::-webkit-scrollbar-thumb:hover {
+  background: #4b0082; /* Darker color when hovering */
+}
+
+
 h2 {
   text-align: center;
   color: #e94560;
@@ -161,5 +190,6 @@ h2 {
 }
 
 .inputs{
-  display: flex !important;
+  display: flex;
+  flex-direction: column;
 }

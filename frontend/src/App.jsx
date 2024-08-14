@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className="relative">
-        <h1 className="absolute">Task Manager</h1>
+        <h1 className="relative">Task Manager</h1>
       </div>
       <AppRoutes />
     </>

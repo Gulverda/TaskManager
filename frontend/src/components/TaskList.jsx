@@ -86,7 +86,7 @@ function TaskList({ token }) {
             <tr key={task._id}>
               <td>
                 {editingTask && editingTask._id === task._id ? (
-                  <div className="edit-form" style={{display: 'flex'}}>
+                  <div className="edit-form" style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div className="inputs">
                     <input
                       type="text"
@@ -110,9 +110,12 @@ function TaskList({ token }) {
                     {error && <p className="error">{error}</p>}
                   </div>
                 ) : (
-                  <div>
+                  <div  style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <div className="inputs">
                     <h3>{task.title}</h3>
                     <p>{task.description}</p>
+                    </div>
+                    <div className="buttons">
                     <button onClick={() => handleEdit(task)}>Edit</button>
                     <button
                       className="cancel-btn"
@@ -120,6 +123,7 @@ function TaskList({ token }) {
                     >
                       Delete
                     </button>
+                    </div>
                   </div>
                 )}
               </td>
