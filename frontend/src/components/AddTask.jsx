@@ -39,25 +39,27 @@ function AddTask({ token }) {
   };
 
   return (
-    <div>
-      <h2>Add Task</h2>
-      <form onSubmit={handleAddTask}>
+    <div className="add-task-container">
+      <h2 className="add-task-title">Add Task</h2>
+      <form className="add-task-form" onSubmit={handleAddTask}>
         <input
           type="text"
+          className="add-task-input"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
+          className="add-task-textarea"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Add Task</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit" className="add-task-button">Add Task</button>
+        {error && <p className="add-task-error">{error}</p>}
       </form>
-      {message && <p>{message}</p>}
-      <button onClick={handleGoToProfile}>Go to Profile</button>
+      {message && <p className="add-task-message">{message}</p>}
+      <button onClick={handleGoToProfile} className="add-task-profile-button">Go to Profile</button>
     </div>
   );
 }

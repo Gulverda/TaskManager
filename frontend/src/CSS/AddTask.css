@@ -1,101 +1,82 @@
-/* AddTask Component Styling
 .add-task-container {
     max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #16213e;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #fff;
   }
   
-  h2 {
+  .add-task-title {
+    font-size: 24px;
+    margin-bottom: 20px;
     text-align: center;
-    color: #e94560;
-    font-size: 28px;
-    margin-bottom: 25px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    color: #b39ddb;
   }
   
-  form {
+  .add-task-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
   }
   
-  input[type='text'],
-  textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #2d2d44;
-    border-radius: 10px;
-    font-size: 16px;
-    background: #0f3460;
-    color: #ffffff;
-    transition: border-color 0.3s ease;
+  .add-task-input,
+  .add-task-textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #333;
+    color: #fff;
   }
   
-  input[type='text']:focus,
-  textarea:focus {
-    border-color: #e94560;
-    outline: none;
+  .add-task-input::placeholder,
+  .add-task-textarea::placeholder {
+    color: #bbb;
   }
   
-  textarea {
+  .add-task-textarea {
+    min-height: 100px;
     resize: vertical;
   }
   
-  button[type='submit'] {
-    background-color: #e94560;
-    color: white;
+  .add-task-button {
+    padding: 10px;
     border: none;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 4px;
+    background-color: #673ab7;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-size: 16px;
-    text-transform: uppercase;
-    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+    transition: background-color 0.3s ease;
   }
   
-  button[type='submit']:hover {
-    background-color: #f05454;
-    transform: translateY(-2px);
+  .add-task-button:hover {
+    background-color: #5e35b1;
   }
   
-  button[type='button'] {
-    background-color: #1f4068;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-size: 16px;
-    text-transform: uppercase;
-    box-shadow: 0 5px 15px rgba(31, 64, 104, 0.3);
+  .add-task-error {
+    color: #f44336;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  .add-task-message {
+    margin-top: 10px;
+    color: #66bb6a;
+  }
+  
+  .add-task-profile-button {
     margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3949ab;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  button[type='button']:hover {
-    background-color: #16213e;
-    transform: translateY(-2px);
+  .add-task-profile-button:hover {
+    background-color: #303f9f;
   }
   
-  .error {
-    color: #dc3545;
-    font-size: 14px;
-  }
-  
-  .message {
-    color: #22c55e;
-    font-size: 14px;
-    text-align: center;
-    background-color: #1f4068;
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-    margin-top: 15px;
-  }
-   */
