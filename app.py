@@ -4,8 +4,9 @@ from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from bson import ObjectId
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend/public', static_url_path='/')
 app.config["MONGO_URI"] = "mongodb://localhost:27017/taskdb"
 app.config["JWT_SECRET_KEY"] = "JWT_SECRET_KEY"
 CORS(app)
