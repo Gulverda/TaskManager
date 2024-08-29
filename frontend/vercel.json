@@ -14,5 +14,9 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "backend/app/app.py" },
     { "src": "/(.*)", "dest": "/frontend/build/$1" }
+  ],
+
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
