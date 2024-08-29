@@ -1,0 +1,17 @@
+# Ignore Python virtual environment
+/backend/venv/
+
+# Ignore Node.js dependencies (if they are not needed in deployment)
+/frontend/node_modules/
+
+# Ignore build directories that should not be deployed
+/frontend/build/
+
+# Ignore configuration files and logs that are not needed for deployment
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
