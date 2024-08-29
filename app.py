@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from bson import ObjectId
 import os
 
-app = Flask(__name__, static_folder='frontend/public', static_url_path='/')
+app = Flask(__name__, static_folder='frontend/build', static_url_path='/')
 app.config["MONGO_URI"] = "mongodb://localhost:27017/taskdb"
 app.config["JWT_SECRET_KEY"] = "JWT_SECRET_KEY"
 CORS(app)
@@ -15,9 +15,13 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 
-@app.route('/')
-def serve_frontend():
-    return send_from_directory(app.static_folder, 'index.html')
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/signup', methods=['POST'])
 def signup():
