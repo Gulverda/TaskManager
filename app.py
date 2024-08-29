@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from bson import ObjectId
 import os
 
-app = Flask(__name__, static_folder='frontend/build', static_url_path='/')
+app = Flask(__name__, static_folder='frontend/build', static_url_path='')
 app.config["MONGO_URI"] = "mongodb://localhost:27017/taskdb"
 app.config["JWT_SECRET_KEY"] = "JWT_SECRET_KEY"
 CORS(app)
@@ -14,7 +14,7 @@ mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-
+# Serve React App
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
@@ -23,6 +23,7 @@ def serve_frontend(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+# User Signup
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
@@ -38,9 +39,10 @@ def signup():
         'username': username, 
         'password': hashed_password, 
         'phoneNumber': phone_number,
-        })
+    })
     return jsonify({"msg": "User created successfully"}), 201
 
+# User Login
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -54,11 +56,13 @@ def login():
 
     return jsonify({"msg": "Bad username or password"}), 401
 
+# User Signout
 @app.route('/signout', methods=['POST'])
 @jwt_required()
 def signout():
     return jsonify({"msg": "Signout successful"}), 200
 
+# Add Task
 @app.route('/tasks', methods=['POST'])
 @jwt_required()
 def add_task():
@@ -70,6 +74,7 @@ def add_task():
     mongo.db.tasks.insert_one({'title': title, 'description': description, 'user': user})
     return jsonify({"msg": "Task added successfully"}), 201
 
+# Get Tasks
 @app.route('/tasks', methods=['GET'])
 @jwt_required()
 def get_tasks():
@@ -79,6 +84,7 @@ def get_tasks():
         task['_id'] = str(task['_id'])  # Convert ObjectId to string
     return jsonify(tasks), 200
 
+# Update Task
 @app.route('/tasks/<task_id>', methods=['PUT'])
 @jwt_required()
 def update_task(task_id):
@@ -95,6 +101,7 @@ def update_task(task_id):
 
     return jsonify({"msg": "Task updated successfully"}), 200
 
+# Delete Task
 @app.route('/tasks/<task_id>', methods=['DELETE'])
 @jwt_required()
 def delete_task(task_id):
